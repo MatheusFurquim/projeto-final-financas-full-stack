@@ -1,0 +1,81 @@
+<div class="card border-secondary">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Relatório financeiro</h3>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive mt-2">
+      <table *ngIf="relatorio.length > 0, else vazio" class="table table-bordered table-striped table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Mês/Ano</th>
+            <th>Total Receitas</th>
+            <th>Total Despesas</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let item of relatorio">
+          <tr>
+            <td>{{ item.mes | date: 'MM/yyyy' }}</td>
+            <td>{{ item.totalReceitas | currency }}</td>
+            <td>{{ item.totalDespesas | currency }}</td>
+            <td class="{{ item.saldo > 0 ? 'text-success' : 'text-danger' }}">{{ item.saldo | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #vazio>
+        <p class="bg-info p-2 text-center">Nenhuma despesa nem receita cadastrada</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="card border-secondary my-3">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Gráfico financeiro</h3>
+  </div>
+
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <canvas id="grafico" >{{ grafico }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card border-secondary my-3">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Educação financeira</h3>
+  </div>
+
+  <div class="card-body">
+    <p>Materiais para estudos sobre educação financeira</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <img src="assets/img/comecar-cedo.jpeg" class="rounded mx-auto" style="max-width: 95%;">
+      </div>
+
+      <div class="col-md-6">
+        <img src="assets/img/regra-72.jpeg" class="rounded mx-auto" style="max-width: 95%;">
+      </div>
+    </div>
+
+    <div class="my-3">
+      <p>Livros sobre educação financeira</p>
+      <ul>
+        <li><a href="https://a.co/d/2n7kiq5">A PSICOLOGIA FINANCEIRA</a></li>
+        <li><a href="https://a.co/d/7nMK7tI">O CATADOR DE SONHOS</a></li>
+        <li><a href="https://amzn.to/3oNieY2">OS SEGREDOS DAS MENTES MILIONÁRIAS</a></li>
+        <li><a href="https://a.co/d/10pFcr2">MAIS ESPERTO QUE O DIABO</a></li>
+        <li><a href="https://a.co/d/dWEljaf">PAI RICO, PAI POBRE</a></li>
+        <li><a href="https://a.co/d/fa8kLSn">O HOMEM MAIS RICO DA BABILONIA</a></li>
+        <li><a href="https://amzn.to/3yOWPU1">OS AXIOMAS DE ZURIQUE</a></li>
+        <li><a href="https://a.co/d/5gD1JwE">O INVESTIDOR INTELIGENTE</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

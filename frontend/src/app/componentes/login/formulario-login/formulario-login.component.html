@@ -1,0 +1,70 @@
+<div class="card border-secondary" *ngIf="!exibeFormularioCadastro">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Gestão de finanças - Login</h3>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="logar()" [formGroup]="formulario">
+      <p class="text-center bg-warning p-2 d-none validacao-formulario">O formulário contém erros de validação</p>
+      <p class="text-center bg-success p-2" *ngIf="cadastroRealizado">Cadastro realizado. Efetue login!</p>
+
+      <div class="mb-3">
+        <label for="username" class="form-label obrigatorio">Email</label>
+        <input type="email" id="username" formControlName="email" class="form-control" required="required" placeholder="Digite seu email">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label obrigatorio">Senha</label>
+        <input type="password" id="password" formControlName="senha" class="form-control" required="required" placeholder="Digite sua senha">
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-sign-in-alt"></i> Logar
+      </button>
+
+      <button type="button" class="btn btn-secondary mx-2" (click)="exibirFormularioCadastro()">
+        <i class="fa fa-user-plus"></i> Cadastrar
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="card border-secondary" *ngIf="exibeFormularioCadastro">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Gestão de finanças - Cadastro</h3>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="cadastrar()" [formGroup]="formularioCadastro">
+      <p class="text-center bg-warning p-2 d-none validacao-formulario">O formulário contém erros de validação</p>
+
+      <div class="mb-3">
+        <label for="nome" class="form-label obrigatorio">Nome</label>
+        <input id="nome" formControlName="nome" class="form-control" required="required" placeholder="Digite seu nome">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label obrigatorio">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" required="required" placeholder="Digite seu email">
+      </div>
+
+      <div class="mb-3">
+        <label for="senha" class="form-label obrigatorio">Senha</label>
+        <input type="password" id="senha" formControlName="senha" class="form-control" required="required" placeholder="Digite sua senha">
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmacaoSenha" class="form-label obrigatorio">Senha</label>
+        <input type="password" id="confirmacaoSenha" formControlName="confirmacaoSenha" class="form-control" required="required" placeholder="Confirme sua senha">
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-save"></i> Cadastrar
+      </button>
+
+      <button type="button" class="btn btn-secondary mx-2" (click)="cancelarCadastro()">
+        <i class="fa fa-times"></i> Cancelar
+      </button>
+    </form>
+  </div>
+</div>

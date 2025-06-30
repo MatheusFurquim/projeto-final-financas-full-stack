@@ -1,0 +1,194 @@
+<div class="card border-secondary my-3">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Perfil de risco</h3>
+  </div>
+
+  <div class="card-body">
+    <p *ngIf="categoria != null" class="text-center p-2 bg-info">Seu perfil de risco é {{ categoria }}</p>
+    <a class="btn btn-primary" (click)="refazer()" *ngIf="categoria != null">
+      <i class="fa fa-retweet"></i> Refazer teste
+    </a>
+
+    <form (ngSubmit)="cadastrar()" [formGroup]="formulario" *ngIf="categoria == null">
+      <p class="text-center bg-warning p-2 d-none validacao-formulario">O formulário contém erros de validação</p>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">1. Quanto tempo você pretende manter seus investimentos?</label>
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta1" id="pergunta1a" value="a">
+          <label class="form-check-label" for="pergunta1a">Curto prazo (até 2 anos)</label>
+        </div>
+
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta1" id="pergunta1b" value="b">
+          <label class="form-check-label" for="pergunta1b">Médio a longo prazo (mais de 2 anos)</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">2. Qual é o seu objetivo principal ao investir?</label>
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta2" id="pergunta2a" value="a">
+          <label class="form-check-label" for="pergunta2a">Preservar o capital, mesmo que isso signifique retornos mais baixos.</label>
+        </div>
+
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta2" id="pergunta2b" value="b">
+          <label class="form-check-label" for="pergunta2b">Buscar retornos mais altos, mesmo que isso envolva algum risco.</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">3. Como você reagiria a uma queda significativa no valor de seus investimentos?</label>
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta3" id="pergunta3a" value="a">
+          <label class="form-check-label" for="pergunta3a">Ficaria preocupado e consideraria vender para evitar mais perdas.</label>
+        </div>
+
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta3" id="pergunta3b" value="b">
+          <label class="form-check-label" for="pergunta3b">Aceitaria as oscilações do mercado, acreditando que os investimentos se recuperarão a longo prazo.</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">4. Qual é sua experiência prévia em investimentos?</label>
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta4" id="pergunta4a" value="a">
+          <label class="form-check-label" for="pergunta4a">Pouca ou nenhuma experiência.</label>
+        </div>
+
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta4" id="pergunta4b" value="b">
+          <label class="form-check-label" for="pergunta4b">Alguma experiência, já realizei alguns investimentos.</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">5. Quanto do seu portfólio você estaria disposto a alocar em investimentos de maior risco?</label>
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta5" id="pergunta5a" value="a">
+          <label class="form-check-label" for="pergunta5a">Menos de 20%</label>
+        </div>
+
+        <div class="form-group my-3">
+          <input class="form-check-input" type="radio" formControlName="pergunta5" id="pergunta5b" value="b">
+          <label class="form-check-label" for="pergunta5b">Mais de 20%</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">6. Como você se sentiria ao perder uma oportunidade de investimento lucrativa por ser muito cauteloso?</label>
+        <div class="form-check py-1">
+          <input class="form-check-input" type="radio" formControlName="pergunta6" id="pergunta6a" value="a">
+          <label class="form-check-label" for="pergunta6a">Preferiria perder oportunidades a correr riscos desnecessários.</label>
+        </div>
+
+        <div class="form-check py-1">
+          <input class="form-check-input" type="radio" formControlName="pergunta6" id="pergunta6b" value="b">
+          <label class="form-check-label" for="pergunta6b">Não me importaria de correr riscos para aproveitar oportunidades lucrativas.</label>
+        </div>
+      </div>
+
+      <div class="form-group my-3">
+        <label class="obrigatorio">7. Qual é sua tolerância a perdas financeiras?</label>
+        <div class="form-check py-1">
+          <input class="form-check-input" type="radio" formControlName="pergunta7" id="pergunta7a" value="a">
+          <label class="form-check-label" for="pergunta7a">Baixa - Não tolero perdas significativas.</label>
+        </div>
+
+        <div class="form-check py-1">
+          <input class="form-check-input" type="radio" formControlName="pergunta7" id="pergunta7b" value="b">
+          <label class="form-check-label" for="pergunta7b">Moderada a Alta - Posso suportar perdas temporárias em busca de ganhos a longo prazo.</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary m-2">
+        <i class="fa fa-save"></i> Salvar
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="card border-secondary" *ngIf="categoria != null">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">RECOMENDAÇÕES</h3>
+  </div>
+
+  <div class="card-body">
+    <div *ngIf="categoria == 'CONSERVADOR'">
+      <p>O perfil conservador representa aqueles investidores que têm mais aversão ao risco. Em geral, esse perfil costuma investir em ativos de renda fixa, poupança e títulos de capitalização, mesmo diante da baixa rentabilidade desses ativos.</p>
+      <p>O que o perfil conservador mais valoriza é a segurança das suas finanças. Eles preferem os investimentos com retornos mais previsíveis.</p>
+    </div>
+
+    <div *ngIf="categoria == 'MODERADO'">
+      <p>O perfil moderado é considerado um nível intermediário em relação ao risco. Essas pessoas assumem riscos mais elevados do que as conservadoras, mas diante de sinais de vulnerabilidade do mercado, elas retornam aos investimentos mais seguros, que representam a sua zona de conforto.</p>
+      <p>Investidores com esse perfil têm preferência por aplicações equilibradas em renda fixa e variável, ou seja, eles investem 50% em renda fixa e 50% em renda variável, buscando a maior rentabilidade possível.</p>
+    </div>
+
+    <div *ngIf="categoria == 'ARROJADO'">
+      <p>Investidores conhecidos como arrojados ou agressivos preferem investir em renda variável (ações, moedas estrangeiras, fundos imobiliários), buscando a maior taxa de rentabilidade. Aceitam rentabilidades negativas pensando em ter um retorno superior no longo prazo.</p>
+      <p>Apesar de lidarem bem com o risco, os arrojados têm conhecimento e controle de seus ativos, ou seja, eles incorrem em riscos maiores, mas calculados.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card border-secondary my-3" *ngIf="categoria != null">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">RENDA FIXA</h3>
+  </div>
+
+  <div class="card-body">
+    <p>Investimentos de renda fixa são um título para financiamento de projetos de empresas, bancos ou atividades do governo.</p>
+
+    <p>Por isso, o investidor recebe o dinheiro emprestado com o acréscimo de juros. O cálculo é realizado com base no tipo do título.</p>
+
+    <img src="assets/img/renda-fixa.png" class="rounded mx-auto d-block">
+
+    <h3>Títulos públicos</h3>
+    <p>Os títulos públicos são investimentos, também chamados de papéis, emitidos pelo Tesouro Nacional com o intuito de captar recursos para o governo.</p>
+    <p>Isso significa que esses investimentos financiam as atividades e projetos do governo, como saúde e educação, projetos de públicos e ações sociais.</p>
+    <p>Esses títulos são divididos em quatro categorias diferentes, sendo elas: Tesouro prefixado, Tesouro Selic, Tesouro IPCA + com e sem juros semestrais e Tesouro prefixado com juros semestrais.</p>
+
+    <h3>CDB</h3>
+    <p>O CDB (Certificado de Depósito Bancário) é um tipo de título privado de renda fixa emitido por bancos. Nestes investimentos, as instituições financeiras captam recursos para financiar seus projetos, como linhas de crédito, financiamentos imobiliários, entre outros.</p>
+    <p>Portanto, o investidor empresta dinheiro para essas instituições privadas e recebe o montante com juros após o prazo do investimento. No caso do CDB, a taxa a qual ele rende pode variar entre pré ou pós-fixada, como o CDI ou o IPCA.</p>
+
+    <h3>LCI e LCA</h3>
+    <p>LCI e LCA também são títulos privados emitidos por instituições financeiras com o intuito de captar recursos para determinadas linhas de crédito. No LCI (Letra de Crédito Imobiliário), os investimentos ocorrem no crédito imobiliário, já no LCA (Letra de Crédito do Agronegócio) são referentes ao agronegócio.</p>
+    <p>A taxa desses dois investimentos também pode variar entre pré e pós-fixada, como CDI e IPCA. Mas algo bem interessante sobre eles é que possuem isenção do Imposto de Renda sobre os rendimentos. Essa é uma estratégia do governo para estimular o crescimento dos setores imobiliário e do agronegócio.</p>
+
+    <h3>Poupança</h3>
+    <p>A poupança é o investimento de renda fixa mais conhecido entre todos. Trata-se de uma conta, que pode ser aberta facilmente em qualquer banco, onde você guarda seu dinheiro e ele rende a uma taxa anual.</p>
+    <p>Esse é um dos investimentos com menor rendimento no mercado, mas por ser fácil de investir, a maioria das pessoas ingressam no mundo dos investimentos a partir de uma conta poupança.</p>
+    <p>Neste investimento, os rendimentos também são isentos do Imposto de Renda e o investidor precisa deixar o dinheiro parado na conta para que ele possa render mensalmente.</p>
+  </div>
+</div>
+
+<div class="card border-secondary my-3" *ngIf="categoria != null">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">RENDA VARIÁVEL</h3>
+  </div>
+
+  <div class="card-body">
+    <p>A renda variável é a modalidade de investimentos na qual o investidor não possui uma previsibilidade dos rendimentos no momento da aplicação.</p>
+    <p>Como o ganho é atrelado à variação do preço dos ativos e como o mercado financeiro vai funcionar, não é possível saber quanto o investimento irá render ou pode ainda perder dinheiro, caso desvalorize.p>
+
+    <img src="assets/img/renda-variavel.png" class="rounded mx-auto d-block">
+
+    <h3>Fundos imobiliários</h3>
+    <p>Fundos imobiliários são investimentos onde os recursos captados são usados para investir no setor imobiliário, como na compra, venda ou locação de imóveis, na aquisição de papéis ou em outros projetos relacionados.</p>
+    <p>Ao investir em um fundo como esse, o investidor se torna cotista e recebe os rendimentos de acordo com a sua cota.</p>
+
+    <h3>Ações</h3>
+    <p>Ações são um dos investimentos de renda variável mais conhecidos. Trata-se de papéis oferecidos pelas empresas na bolsa de valores, com o intuito de captar recursos para o caixa da instituição.</p>
+    <p>Por outro lado, o investidor que adquire esses ativos se torna acionista minoritário e pode ainda realizar operações de compra e venda com outros investidores com base em estratégias específicas, mas precisam ser negociadas no ambiente da bolsa de valores.</p>
+
+    <h3>Futuros</h3>
+    <p>Os futuros ou mercados futuros são investimentos no qual o investidor estabelece uma operação de compra ou venda de um determinado bem, para uma data futura e com o valor pré-definido.</p>
+    <p>Nesse caso, ele compra ou vende um ativo, que pode ser um índice, moedas ou commodities, a um preço combinado com antecedência. A conclusão da operação só acontece no momento estabelecido no contrato, em uma data futura.</p>
+
+    <h3>Câmbio</h3>
+    <p>A compra de moeda estrangeira na bolsa de valores é um mercado derivativo. O investidor adquire determinada quantidade de dinheiro estrangeiro, futuros de dólar, por exemplo, por um valor pré-estabelecido, mas só vai receber a quantia no futuro.</p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="card border-secondary">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Meus dados</h3>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="atualizar()" [formGroup]="formulario">
+      <p class="text-center bg-warning p-2 d-none validacao-formulario">O formulário contém erros de validação</p>
+
+      <div class="mb-3">
+        <label for="nome" class="form-label obrigatorio">Nome</label>
+        <input id="nome" formControlName="nome" required="required" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label obrigatorio">Email</label>
+        <input type="email" id="email" formControlName="email" required="required" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="senha" class="form-label obrigatorio">Senha</label>
+        <input type="password" id="senha" formControlName="senha" required="required" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmacaoSenha" class="form-label obrigatorio">Confirme a senha</label>
+        <input type="password" id="confirmacaoSenha" formControlName="confirmacaoSenha" required="required" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-save"></i> Salvar
+      </button>
+    </form>
+  </div>
+</div>

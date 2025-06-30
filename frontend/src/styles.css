@@ -1,0 +1,13 @@
+.obrigatorio::after {
+	content: ' *';
+	color: red;
+	font-size: 110%;
+}
+
+form.ng-submitted input.ng-invalid {
+  outline: 1px solid var(--bs-form-invalid-color);
+}
+
+.ng-submitted .validacao-formulario {
+  display: block!important;
+}

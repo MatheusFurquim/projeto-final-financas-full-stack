@@ -1,0 +1,47 @@
+<div class="card border-secondary">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Usuários cadastrados</h3>
+  </div>
+
+  <div class="card-body">
+    <a class="btn btn-primary" routerLink="/admin/usuarios/formulario">
+      <i class="fa fa-plus"></i> Cadastrar
+    </a>
+
+    <div class="table-responsive mt-2">
+      <table *ngIf="usuarios.length > 0, else vazio" class="table table-bordered table-striped table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Admin?</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let usuario of usuarios">
+          <tr>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.admin ? 'SIM' : 'NÃO' }}</td>
+            <td>
+              <a title="Editar" class="btn btn-info" routerLink="/admin/usuarios/{{ usuario.id }}">
+                <i class="fa fa-pen"></i>
+              </a>
+
+              <form (ngSubmit)="excluir(usuario.id!)" class="d-inline-block mx-2">
+                <button type="submit" class="btn btn-danger" title="Excluir">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #vazio>
+        <p class="bg-info p-2 text-center">Nenhum usuário cadastrado</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="card border-secondary">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Cadastro de Despesa</h3>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="cadastrar()" [formGroup]="formulario">
+      <p class="text-center bg-warning p-2 d-none validacao-formulario">O formulário contém erros de validação</p>
+
+      <div class="mb-3">
+        <label for="descricao" class="form-label obrigatorio">Descrição</label>
+        <input id="descricao" formControlName="descricao" required="required" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="valor" class="form-label obrigatorio">Valor</label>
+        <input id="valor" currencyMask maxlength="13" formControlName="valor" required="required" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="data" class="form-label obrigatorio">Data</label>
+        <input type="date" id="data" formControlName="data" required="required" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary m-2">
+        <i class="fa fa-save"></i> Salvar
+      </button>
+
+      <a type="button" class="btn btn-secondary" routerLink="/despesas">
+        <i class="fa fa-times"></i> Cancelar
+      </a>
+    </form>
+  </div>
+</div>

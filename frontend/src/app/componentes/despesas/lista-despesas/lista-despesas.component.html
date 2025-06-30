@@ -1,0 +1,47 @@
+<div class="card border-secondary">
+  <div class="card-header">
+    <h3 class="text-center text-uppercase">Despesas cadastradas</h3>
+  </div>
+
+  <div class="card-body">
+    <a class="btn btn-primary" routerLink="/despesas/formulario">
+      <i class="fa fa-plus"></i> Cadastrar
+    </a>
+
+    <div class="table-responsive mt-2">
+      <table *ngIf="despesas.length > 0, else vazio" class="table table-bordered table-striped table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let despesa of despesas">
+          <tr>
+            <td>{{ despesa.descricao }}</td>
+            <td>{{ despesa.valor | currency }}</td>
+            <td>{{ despesa.data | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <a title="Editar" class="btn btn-info" routerLink="/despesas/{{ despesa.id }}">
+                <i class="fa fa-pen"></i>
+              </a>
+
+              <form (ngSubmit)="excluir(despesa.id!)" class="d-inline-block mx-2">
+                <button type="submit" class="btn btn-danger" title="Excluir">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #vazio>
+        <p class="bg-info p-2 text-center">Nenhuma despesa cadastrada</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
